@@ -30,6 +30,10 @@ module.exports = {
 						presets: [
 							'@babel/preset-env',//ES6 ==> ES5
 							'@babel/preset-react' //jsx===>js
+						],
+						plugins:[
+							//让babel认识类中的新写法
+							'@babel/plugin-proposal-class-properties' 
 						]
 					}
 				}
