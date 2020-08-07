@@ -14,7 +14,7 @@ export default class Add extends Component {
 
 		//给解构出来的变量重命名
 		//const userInput = value1
-
+		
 		//特别注意：连续解构赋值+重命名！！！
 		const {target:{value:userInput}} = event
 
