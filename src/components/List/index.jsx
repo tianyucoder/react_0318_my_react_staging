@@ -7,13 +7,14 @@ export default class List extends Component {
 
 	static propTypes = {
 		todos:PropTypes.array.isRequired,
+		checkTodo:PropTypes.func.isRequired,
 	}
 
 	render() {
-		const {todos} = this.props
+		const {todos,checkTodo} = this.props
 		return (
 			<ul className="todo-main">
-				{todos.map(todo => <Item key={todo.id} {...todo}/>)}
+				{todos.map(todo => <Item key={todo.id} {...todo} checkTodo={checkTodo}/>)}
 			</ul>
 		)
 	}
