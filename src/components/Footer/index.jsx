@@ -3,8 +3,18 @@ import './index.css'
 
 export default class Footer extends Component {
 
-	handleCheckAll = ()=>{
-		console.log('你全选了');
+	//全选
+	handleCheckAll = (event)=>{
+		const {target:{checked}} = event
+		this.props.checkAll(checked)
+	}
+
+	//清除所有已完成的
+	clearAllCompleted = ()=>{
+		const {clearAllCompleted} = this.props
+		if(confirm('确定清除所有已完成的吗？')){
+			clearAllCompleted()
+		}
 	}
 
 	render() {
@@ -22,7 +32,7 @@ export default class Footer extends Component {
 				<span>
 					<span>已完成{completedCount}</span> / 全部{total}
 				</span>
-				<button className="btn btn-danger">清除已完成任务</button>
+				<button onClick={this.clearAllCompleted} style={{display:completedCount > 0 ? 'block' :'none'}} className="btn btn-danger">清除已完成任务</button>
 			</div>
 		)
 	}
