@@ -40,14 +40,34 @@ export default class App extends Component{
 		this.setState({todos})
 	}
 
+	//删除一个todo
+	deleteTodo = (id)=>{
+		//使用filter删除（效率稍低）
+		/* const todos = this.state.todos.filter((todo)=>{
+			console.log('@');
+			return todo.id !== id
+		})
+		this.setState({todos}) */
+
+		//使用findIndex实现(效率高)
+		const index = this.state.todos.findIndex((todo)=>{
+			console.log('@');
+			return todo.id === id
+		})
+		const todos = [...this.state.todos]
+		todos.splice(index,1)
+		this.setState({todos})
+	}
+
+
 	render(){
 		const {todos} = this.state
 		return(
 			<div className="todo-container">
 				<div className="todo-wrap">
 					<Add addTodo={this.addTodo}/>
-					<List todos={todos} checkTodo={this.checkTodo}/>
-					<Footer/>
+					<List todos={todos} checkTodo={this.checkTodo} deleteTodo={this.deleteTodo}/>
+					<Footer todos={todos}/>
 				</div>
 			</div>
 		)
