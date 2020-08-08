@@ -19,12 +19,23 @@ export default class Search extends Component {
 	handleSearch = ()=>{
 		//1.获取用户输入
 		const {keyWord} = this.state
-		//2.发起请求
+		const {updateAppState} = this.props
+		//2.请求之前展示loading界面
+		updateAppState({isLoading:true,isFirst:false})
+		//3.发起请求
+		//若请求地址为：/api/search/users?q=xxx 则会返回的是真实gihub数据
+		//若请求地址为：/api/search/users2?q=xxx 则会返回的是假数据
+		//备注：若你所在网络请求github不同，用第二个路径，即：带/user2的
 		axios.get(`/api/search/users?q=${keyWord}`).then(
-			response => {console.log('请求成功',response);},
-			error => {console.log('请求失败',error);}
+			response => {
+				//请求成功后，存储用户列表，不展示loading
+				updateAppState({users:response.data.items,isLoading:false})
+			},
+			err => {
+				//请求失败后，存储用错误信息，不展示loading
+				updateAppState({error:err.message,isLoading:false})
+			}
 		)
-		
 	}
 
 	render() {
