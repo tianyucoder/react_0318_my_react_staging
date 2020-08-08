@@ -22,7 +22,8 @@
 		 		优点：可以实现任意组件间通信
 				要求：先订阅，再发布
 				用什么库：pubsub-js
-				
+		订阅消息：PubSub.subscribe(msgName,callback)
+		发布消息：PubSub.publish(msgName,data)
 
 		 
 			
