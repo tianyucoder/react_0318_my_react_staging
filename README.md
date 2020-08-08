@@ -26,12 +26,13 @@
 		发布消息：PubSub.publish(msgName,data)
 
 # React中的路由
-	## SPA应用(单页面应用)
+
+ ## SPA应用(单页面应用)
 			思考1：单页面应用如何做切换？靠路由
 			思考2：何为路由组件？何为一般组件？
 			总结一句话：SPA应用，页面是“单”的，但是组件是“多”的————单页面，多组件，靠路由
 
-	## 1.路由的基本使用：
+ ## 1.路由的基本使用：
 				(1).下载react-router-dom：yarn add react-router-dom。
 				(2).将内容展示区，展示的不同内容拆成组件，最好放在pages里
 						备注：在react的设计规范中，components放一般组件 pages放路由组件
@@ -40,7 +41,23 @@
 				(4).在index中引入BrowserRouter，包裹App，一劳永逸
 				(5).注册路由：先引入Route
 						<Route path="/about" component={About}/>
+						
+ ## 2.NavLink的使用
+			如果你的路由链接是有高亮样式，考虑到用NavLink
 
+ ## 3.Switch的使用
+		  如果有一个以上的路由注册，那么在注册路由时，最好包裹一个Switch提高匹配效率
 
+ ## 4.解决路径中有多个/导致样式丢失的问题，解决方案如下：
+			(1).修改index.html中引入样式的路径，不要写./  要写/
+			(2).使用HashRouter代替BrowserRouter
+			
+ ## 5.精准匹配与模糊匹配
+			(1).react-router-dom默认开启的是模糊匹配(最小的匹配粒度是“单词”)
+			(2).给Route加exact={true} 或 exact 即可开启严格匹配
+			(3).如果不开启严格匹配，会影响功能效果，那么再开
+			
+ ## 6.Redirect的使用
+			若路径和任何一个路由path都不能匹配，按照Redirect的指示进行跳转
 
 			
