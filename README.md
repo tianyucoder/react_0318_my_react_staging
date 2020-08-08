@@ -25,5 +25,22 @@
 		订阅消息：PubSub.subscribe(msgName,callback)
 		发布消息：PubSub.publish(msgName,data)
 
-		 
+# React中的路由
+	## SPA应用(单页面应用)
+			思考1：单页面应用如何做切换？靠路由
+			思考2：何为路由组件？何为一般组件？
+			总结一句话：SPA应用，页面是“单”的，但是组件是“多”的————单页面，多组件，靠路由
+
+	## 1.路由的基本使用：
+				(1).下载react-router-dom：yarn add react-router-dom。
+				(2).将内容展示区，展示的不同内容拆成组件，最好放在pages里
+						备注：在react的设计规范中，components放一般组件 pages放路由组件
+				(3).从react-router-dom中引入Link，用于编写路由链接
+							<Link to="/about">About</Link>
+				(4).在index中引入BrowserRouter，包裹App，一劳永逸
+				(5).注册路由：先引入Route
+						<Route path="/about" component={About}/>
+
+
+
 			

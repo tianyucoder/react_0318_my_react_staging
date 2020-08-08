@@ -3,8 +3,6 @@ const axios = require("axios")
 const app = express()
 
 // 启动服务器 node index.js
-
-// 请求地址： http://localhost:3000/search
 app.get("/search", function (req, res) {
   res.json({
     code: 10000, // 成功
@@ -16,13 +14,6 @@ app.get("/search", function (req, res) {
   })
 })
 
-/*
-  请求地址： http://localhost:3000/search/users?q=aa
-
-  后台路由
-    key： /search/users
-    value： function () {}
-*/
 app.get("/search/users", function (req, res) {
   const {q} = req.query
   axios({

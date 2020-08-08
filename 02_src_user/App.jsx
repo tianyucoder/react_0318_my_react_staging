@@ -13,7 +13,7 @@ export default class App extends Component {
 
 	/**
 	 * 此方法用于更新App的状态
-	 * @param {*} obj 
+	 * @param {*} obj 是状态对象
 	 */
 	updateAppState = (obj)=>{
 		this.setState({...obj})
