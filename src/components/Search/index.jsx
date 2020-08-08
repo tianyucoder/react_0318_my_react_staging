@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 export default class Search extends Component {
 
@@ -6,6 +7,7 @@ export default class Search extends Component {
 		keyWord:'' //输入的关键词
 	}
 
+	//向state中保存用户输入的关键字
 	saveKeyWord = (event)=>{
 		//获取用户的输入
 		const {target:{value:keyWord}} = event
@@ -13,10 +15,15 @@ export default class Search extends Component {
 		this.setState({keyWord})
 	}
 
+	//点击搜索的回调
 	handleSearch = ()=>{
 		//1.获取用户输入
-		alert(this.state.keyWord)
+		const {keyWord} = this.state
 		//2.发起请求
+		axios.get(`/api/search/users?q=${keyWord}`).then(
+			response => {console.log('请求成功',response);},
+			error => {console.log('请求失败',error);}
+		)
 		
 	}
 

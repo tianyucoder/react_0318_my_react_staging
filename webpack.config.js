@@ -82,8 +82,15 @@ module.exports = {
 
 	//配置dev-server
 	devServer: {
-		port:3000,//服务启动的端口
+		port:8080,//服务启动的端口
 		open:true,//是否自动打开浏览器
+		proxy: {
+			'/api': { // 只有/api开头的请求，才会转发给target配置的服务器
+					target: 'http://localhost:3000', //转发给谁
+					pathRewrite: {'^/api' : ''}, //改写路径
+					changeOrigin: true, //如果前台脚手架的主机名和服务器的主机名不一致，则需要changeOrigin: true
+			}
+	},
 	},
 
 	//配置省略后缀
