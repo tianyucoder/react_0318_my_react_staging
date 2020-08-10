@@ -142,7 +142,7 @@
 					export default withRouter(Title)
 
  ## 14.类的装饰器
-		请参考：src/decorator.js
+		请参考：src/decorator.js去学习
 		第一步：解决vscode飘红：
 					设置中搜索：experimentalDecorators ===>把钩打上
 		第二步：解决脚手架不认识装饰器语法：
@@ -158,3 +158,11 @@
 					2.官方脚手架：
 									(1).安装依赖：@babel/plugin-proposal-decorators
 									(2).更改：config-overrides.js文件，添加一个addDecoratorsLegacy
+ 
+ ## 15.使用react官方脚手架
+		1.全局安装create-react-app（做一次就可以）
+				npm install create-react-app -g (注意：不要用yarn进行全局安装)
+		2.在你喜欢的目录里！！！！！，创建项目
+				create-react-app peiqi
+		3.cd到工程目录！！！！
+				yarn start
