@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import {withRouter} from 'react-router-dom'
 
+//withRouter是装饰器函数，withRouter有返回值
+
+@withRouter
 class Title extends Component {
 
 	//后退
@@ -25,5 +28,4 @@ class Title extends Component {
 		)
 	}
 }
-
-export default withRouter(Title)
+export default Title
