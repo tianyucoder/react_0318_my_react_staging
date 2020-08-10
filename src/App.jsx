@@ -3,6 +3,7 @@ import About from './pages/About'
 import Home from './pages/Home'
 import Demo from './pages/Demo'
 import {NavLink,Route,Switch,Redirect} from 'react-router-dom'
+import MyNavLink from './components/MyNavLink'
 import './App.css'
 
 export default class App extends Component {
@@ -23,8 +24,8 @@ export default class App extends Component {
 							<a className="list-group-item" href="./home.html">Home</a> */}
 
 							{/* react中的写法，靠Link标签更改浏览器的历史记录 */}
-							<NavLink className="list-group-item" activeClassName="demo" to="/about">About</NavLink>
-							<NavLink className="list-group-item" activeClassName="demo" to="/home">Home</NavLink>
+							<MyNavLink to="/about">About</MyNavLink>
+							<MyNavLink to="/home">Home</MyNavLink>
 						</div>
 					</div>
 					<div className="col-xs-6">
