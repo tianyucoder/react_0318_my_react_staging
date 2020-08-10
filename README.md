@@ -64,7 +64,42 @@
  ## 6.Redirect的使用
 			若路径和任何一个路由path都不能匹配，按照Redirect的指示进行跳转
 
- ## 7.组件实例的props.chilren获取到的是什么？
-			标签体内容
+ ## 7.组件实例的props.chilren获取到的是什么？———— 标签体内容
+
+ ## 8.路由跳转时，之前的路由组件会被卸载
+
+ ## 9.路由跳转的replace模式与push模式
+			1.默认是push模式————会留下历史记录
+			2.replace模式———————不会留下历史记录
+					编码：<NavLink to="/about" replace />About</NavLink>
+
+ ## 10.路由组件 与 一般组件的区别：
+	路由实例身上props中的内容有所区别：
+	1.一般组件看些标签时传了什么 即：<Demo name="tom"/>
+	2.路由组件在渲染的时候传了固定的三个属性：history、location、match
+		history:
+					goBack: ƒ goBack()
+					goForward: ƒ goForward()
+					location: {pathname: "/about", search: "", hash: "", state: null, key: "dmnqzx"}
+					push: ƒ push(path, state)
+					replace: ƒ replace(path, state)
+		location:
+					pathname: "/about"
+					search: ""
+					state: null
+		match:
+					params: {}
+			
+ ## 11.路由组件间的传参
+				1.params参数:
+						如何传：
+								<Link to={`/home/message/detail/0001/消息1`}>xxxx</Link>
+								<Route path="/home/message/detail/:id/:title" component={Deatil}/>
+						如何接：
+								this.props.match.params.id 或 this.props.match.params.title
+				2.
+
+
+			
 
 			

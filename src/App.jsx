@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Demo from './pages/Demo'
 import {NavLink,Route,Switch,Redirect} from 'react-router-dom'
 import MyNavLink from './components/MyNavLink'
+import Title from './components/Title'
 import './App.css'
 
 export default class App extends Component {
@@ -12,7 +13,7 @@ export default class App extends Component {
 			<div>
 				<div className="row">
 					<div className="col-xs-offset-2 col-xs-8">
-						<div className="page-header"><h2>React Router Demo</h2></div>
+						<Title/>
 					</div>
 				</div>
 				<div className="row">
@@ -34,8 +35,8 @@ export default class App extends Component {
 								{/* 注册路由 */}
 								<Switch>
 									<Route path="/about" exact component={About}/>
-									<Route path="/about/student" component={Demo}/>
-									<Route path="/home" component={Home}/>
+									<Route path="/about/student"  component={Demo}/>
+									<Route path="/home"  component={Home}/>
 									<Redirect to="/about"/>
 								</Switch>
 							</div>
