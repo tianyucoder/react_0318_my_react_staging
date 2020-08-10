@@ -13,20 +13,22 @@ export default class Deatil extends Component {
 
 	render() {
 		//第一种：获取params参数
-		//const {id,title} = this.props.match.params
+		const {id,title} = this.props.match.params
 
 		//第二种：获取search参数
-		let {search} = this.props.location
+		/* let {search} = this.props.location
 		//借助qs库，解析search参数
 		search = search.split('?')[1]
-		const {id,title} = qs.parse(search)
+		const {id,title} = qs.parse(search) */
+
+		//第三种：获取location.state参数
+		//const {id,title} = this.props.location.state
 		
 		//检索数据
 		const result = this.state.detailArr.find((detailObj)=>{
 			return detailObj.id === id
 		})
 		
-
 		return (
 			<div>
 				<div>ID：{id}</div>

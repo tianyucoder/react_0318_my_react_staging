@@ -76,21 +76,20 @@
 					编码：<NavLink to="/about" replace />About</NavLink>
 
  ## 10.路由组件 与 一般组件的区别：
-	路由实例身上props中的内容有所区别：
-	1.一般组件看些标签时传了什么 即：<Demo name="tom"/>
-	2.路由组件在渲染的时候传了固定的三个属性：history、location、match
-		history:
-					goBack: ƒ goBack()
-					goForward: ƒ goForward()
-					location: {pathname: "/about", search: "", state: null}
-					push: ƒ push(path, state)
-					replace: ƒ replace(path, state)
-		location:
-					pathname: "/about"
-					search: ""
-					state: null
-		match:
-					params: {} //接收传递过来的params参数
+			路由实例身上props中的内容有所区别：
+				1.一般组件看些标签时传了什么 即：<Demo name="tom"/>
+				2.路由组件在渲染的时候传了固定的三个属性：history、location、match
+					history:
+								goBack: ƒ goBack() //后退
+								goForward: ƒ goForward() //前进
+								push: ƒ push(path, state) //路由跳转--push
+								replace: ƒ replace(path, state) //路由跳转--replace
+					location:
+								pathname: "/about" //当前的路由路径
+								search: "" //接收传递过来的search参数
+								state: null
+					match:
+								params: {} //接收传递过来的params参数
 			
  ## 11.路由组件间的传参
 				1.params参数:————用的最多
@@ -98,14 +97,14 @@
 								<Link to={`/home/message/detail/0001/消息1`}>xxxx</Link>
 								<Route path="/home/message/detail/:id/:title" component={Deatil}/>
 						如何接：
-								this.props.match.params.id 或 this.props.match.params.title
+								this.props.match.params.xxxxxxx
 
 				2.search参数————用的最少
 							如何传：
 								<Link to={`/home/message/detail?id=0001&title=消息1`}>xxxx</Link>
 								<Route path="/home/message/detail" component={Deatil}/>
 							如何接：
-									this.props.location.search
+									this.props.location.search (注意处理?的问题)
 							注意：接过来search参数，要解析，推荐使用qs库去解析，编码如下：
 									(1).search字符串转对象
 												const str = 'name=tom&age=19'
@@ -114,9 +113,18 @@
 												const obj = {name:'tom',age:19} //name=tom&age=19
 												console.log(qs.stringify(obj));
 
-				3.location.state参数		
+				3.location.state参数 ---- 编程式路由导航
+							如何传：
+										this.props.history.push('/home/message/detail',{id,title})
+										<Route path="/home/message/detail" component={Deatil}/>
+							如何接：
+										this.props.location.state.xxxxxx
 
-					
 
-
-			
+ ## 12.编程式路由导航
+			即：不只是使用Link或NavLink进行路由的跳转，也可以手动编写跳转
+			编写方式：
+				1.传递params参数
+							this.props.history.push(`/home/message/detail/${id}/${title}`)
+							this.props.history.replace(`/home/message/detail/${id}/${title}`)
+				2.传递search参数
