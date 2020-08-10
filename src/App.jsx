@@ -5,6 +5,7 @@ import Demo from './pages/Demo'
 import {NavLink,Route,Switch,Redirect} from 'react-router-dom'
 import MyNavLink from './components/MyNavLink'
 import Title from './components/Title'
+import './decorator' //为了讲解装饰器语法，而引入的文件
 import './App.css'
 
 export default class App extends Component {

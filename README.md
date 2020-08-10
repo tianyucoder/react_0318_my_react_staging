@@ -87,7 +87,7 @@
 					location:
 								pathname: "/about" //当前的路由路径
 								search: "" //接收传递过来的search参数
-								state: null
+								state: //接收传递过来的state参数
 					match:
 								params: {} //接收传递过来的params参数
 			
@@ -128,3 +128,33 @@
 							this.props.history.push(`/home/message/detail/${id}/${title}`)
 							this.props.history.replace(`/home/message/detail/${id}/${title}`)
 				2.传递search参数
+							this.props.history.push(`/home/message/detail?id=${id}&title=${title}`)
+							this.props.history.replace(`/home/message/detail?id=${id}&title=${title}`)
+				3.传递location.state参数
+						this.props.history.push('/home/message/detail',{id,title})
+						this.props.history.replace('/home/message/detail',{id,title})
+
+ ## 13.如何在非路由组件中，使用路由组件所特有的API
+			借助 withRouter
+			编码：
+					import {withRouter} from 'react-router-dom'
+					class Title extends Component {}
+					export default withRouter(Title)
+
+ ## 14.类的装饰器
+		请参考：src/decorator.js
+		第一步：解决vscode飘红：
+					设置中搜索：experimentalDecorators ===>把钩打上
+		第二步：解决脚手架不认识装饰器语法：
+					1.我们的脚手架里：
+								(1).安装依赖：yarn add @babel/plugin-proposal-decorators
+								(2).修改webpack.config.js配置:
+											修改plugins:
+													plugins:[
+														['@babel/plugin-proposal-decorators',{legacy: true}],
+														//让babel认识类中的新写法
+														'@babel/plugin-proposal-class-properties' 
+													]
+					2.官方脚手架：
+									(1).安装依赖：@babel/plugin-proposal-decorators
+									(2).更改：config-overrides.js文件，添加一个addDecoratorsLegacy
