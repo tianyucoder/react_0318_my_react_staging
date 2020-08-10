@@ -151,9 +151,9 @@
 								(2).修改webpack.config.js配置:
 											修改plugins:
 													plugins:[
-														['@babel/plugin-proposal-decorators',{legacy: true}],
-														//让babel认识类中的新写法
-														'@babel/plugin-proposal-class-properties' 
+															['@babel/plugin-proposal-decorators',{legacy: true}],
+															//让babel认识类中的新写法
+															'@babel/plugin-proposal-class-properties' 
 													]
 					2.官方脚手架：
 									(1).安装依赖：@babel/plugin-proposal-decorators
