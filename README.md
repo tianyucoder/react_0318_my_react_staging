@@ -1,5 +1,5 @@
 # github搜索案例练习
-	## 1.如何启动我们搭建的github搜索服务器
+ ## 1.如何启动我们搭建的github搜索服务器
 			(1).课件中找到：05_所需服务器/server.js,复制到当前工程github_user_server文件夹中。
 			(2).安装express框架:yarn add express
 			(3).为了避免端冲突，修改webpack.config.json文件，将脚手架启动端口调整为8080
@@ -14,7 +14,7 @@
 			(6).修改Search组件中的请求地址为：/api/search/users?q=xxxxx
 			(7).启动前台项目：yarn dev
 
-# 二、消息订阅与发布
+ ## 2.消息订阅与发布
 	## 例子：订报纸
 				(1).先订阅报纸————去邮局交钱，告诉邮局你家的地址
 				(2).邮递员在指定时间，按照你提供的住址，上门送报纸。
@@ -82,7 +82,7 @@
 		history:
 					goBack: ƒ goBack()
 					goForward: ƒ goForward()
-					location: {pathname: "/about", search: "", hash: "", state: null, key: "dmnqzx"}
+					location: {pathname: "/about", search: "", state: null}
 					push: ƒ push(path, state)
 					replace: ƒ replace(path, state)
 		location:
@@ -93,15 +93,30 @@
 					params: {} //接收传递过来的params参数
 			
  ## 11.路由组件间的传参
-				1.params参数:
+				1.params参数:————用的最多
 						如何传：
 								<Link to={`/home/message/detail/0001/消息1`}>xxxx</Link>
 								<Route path="/home/message/detail/:id/:title" component={Deatil}/>
 						如何接：
 								this.props.match.params.id 或 this.props.match.params.title
-				2.
 
+				2.search参数————用的最少
+							如何传：
+								<Link to={`/home/message/detail?id=0001&title=消息1`}>xxxx</Link>
+								<Route path="/home/message/detail" component={Deatil}/>
+							如何接：
+									this.props.location.search
+							注意：接过来search参数，要解析，推荐使用qs库去解析，编码如下：
+									(1).search字符串转对象
+												const str = 'name=tom&age=19'
+												console.log(qs.parse(str));
+									(2).对象转search字符串
+												const obj = {name:'tom',age:19} //name=tom&age=19
+												console.log(qs.stringify(obj));
 
-			
+				3.location.state参数		
+
+					
+
 
 			

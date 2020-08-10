@@ -20,14 +20,24 @@ export default class Message extends Component {
 						this.state.messageArr.map( msg =>{
 							return (
 								<li key={msg.id}>
-									<Link to={`/home/message/detail/${msg.id}/${msg.title}`}>{msg.title}</Link>&nbsp;&nbsp;
+									{/* 传params参数 */}
+									{/* <Link to={`/home/message/detail/${msg.id}/${msg.title}`}>{msg.title}</Link> */}
+
+									{/* 传search参数 */}
+									<Link to={`/home/message/detail?id=${msg.id}&title=${msg.title}`}>{msg.title}</Link>
+
 								</li>
 							)
 						})
 					}
 				</ul>
 				<hr/>
-				<Route path="/home/message/detail/:id/:title" component={Deatil}/>
+				{/* 若传的是params参数，路由要这样注册： */}
+				{/* <Route path="/home/message/detail/:id/:title" component={Deatil}/> */}
+
+				{/* 若传的是search参数，正常注册即可 */}
+				<Route path="/home/message/detail" component={Deatil}/>
+				
 			</div>
 		)
 	}

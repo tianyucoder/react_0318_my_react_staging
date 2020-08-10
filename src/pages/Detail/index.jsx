@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import qs from 'qs'
 
 export default class Deatil extends Component {
 
@@ -11,10 +12,20 @@ export default class Deatil extends Component {
 	}
 
 	render() {
-		const {id,title} = this.props.match.params
+		//第一种：获取params参数
+		//const {id,title} = this.props.match.params
+
+		//第二种：获取search参数
+		let {search} = this.props.location
+		//借助qs库，解析search参数
+		search = search.split('?')[1]
+		const {id,title} = qs.parse(search)
+		
+		//检索数据
 		const result = this.state.detailArr.find((detailObj)=>{
 			return detailObj.id === id
 		})
+		
 
 		return (
 			<div>
